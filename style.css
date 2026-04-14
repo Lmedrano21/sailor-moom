@@ -80,7 +80,7 @@ hr {
 }
 
 .main_{
-  background-image: url(back.jpeg);
+  background-image: url(assets/img/back.jpeg);
   
 }
 .main_ h2{
@@ -109,7 +109,7 @@ hr {
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 
-.map-container iframe {
+.map-container iframe { /* Esto es pal mapa*/
     position: absolute;
     top: 0;
     left: 0;
@@ -130,7 +130,7 @@ hr {
 /*Aqui se modifica las imagenes secundarias*/
 .Imagenes_Secundarias1{
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos fotos pequeñas abajo */
+    grid-template-columns: 1fr 1fr ; /* Dos fotos pequeñas abajo */
     gap: 10px;
     object-fit: contain;
     
