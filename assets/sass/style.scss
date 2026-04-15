@@ -1,151 +1,160 @@
+// VARIABLES (Sirven para guardar valores que usaremos mucho)
+$color-principal: #FF69B4; // Rosa Sailor
+$color-secundario: #FFD700; // Dorado Moon
+$fondo-oscuro: #000000;
+$texto-claro: #f5f5f5;
+$gradiente-magico: linear-gradient(to bottom right, $color-principal, $color-secundario);
+
+// RESET BÁSICO
 html {
-  font-size: 10px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #000000;
-  margin: 0 auto;
-  border: 0px solid black;
-
-  p {
-    font-size: 80px;
-    line-height: 2;
-    letter-spacing: 1px;
-    color: white;
-  }
-  
+  font-size: 10px; // Definimos base para usar REMs
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $fondo-oscuro;
+  scroll-behavior: smooth;
 }
+
 body {
-  margin: 0 auto;
-  border: 0px solid black;
-  
-}
-
-hr {
-  width: 95%; /* Acorta la línea al 50% del ancho del contenedor */
-  margin: 0 auto; /* Centra la línea */
-  border: 0; /* Elimina el borde por defecto */
-  height: 2px; /* Define el grosor */
-  background: linear-gradient(to bottom right, #FF69B4, #FFD700); /* Color de la línea */
-}
-
-.header{
-    font-size: 40px;
-    color: whitesmoke;
-    display: flex;
-    justify-content: space-between;
-    margin: 50px;
-}
-
-h1 {
-  font-size: 80px;
   margin: 0;
-  padding: 20px 0;
-  color: whitesmoke;
+  padding: 0;
+  color: $texto-claro;
 }
 
-h2 {
-  font-size: 18px;
-  line-height: 2;
-  letter-spacing: 1px;
-  color: #FF69B4;
-  font-size: 20px;
+// LÍNEA DIVISORIA
+hr {
+  width: 95%;
+  height: 2px;
+  border: 0;
+  background: $gradiente-magico;
+  margin: 20px auto;
 }
 
-.info{
-    text-align: center;
-
-    
-}
-.main_{
-  background-image: url(assets/img/back.jpeg);
+// HEADER
+.header {
+  display: flex; // Alinea elementos en línea
+  justify-content: space-between; // Separa logo de link
+  align-items: center;
+  padding: 20px 5%;
   
+  img {
+    height: 80px; // Controlamos el tamaño del logo
+    object-fit: contain; // Evita que la imagen se deforme
+  }
+
+  a {
+    color: $texto-claro;
+    font-size: 1.8rem;
+    text-decoration: none;
+    border: 1px solid $color-principal;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+
+    &:hover { background: $color-principal; }
+  }
 }
 
+// SECCIÓN PRINCIPAL (HERO)
+.main_ {
+  text-align: center;
+  padding: 50px 20px;
+  background-size: cover; // La imagen de fondo cubre todo el div
+  background-position: center;
+
+  h1 { font-size: 6rem; color: $texto-claro; }
+  h2 { font-size: 3rem; color: $color-principal; }
+  p { font-size: 1.8rem; }
+  
+  .highlight {
+    background: $gradiente-magico;
+    color: transparent;
+    font-weight: bold;
+  }
+}
+
+// IMAGEN CON ANIMACIÓN
 .img_style {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 100%;  
-    height: auto;  
-    animation: flotar 1s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  animation: flotar 3s ease-in-out infinite;
+
+  img {
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid $color-principal;
+    box-shadow: 0 0 20px $color-principal;
+  }
 }
 
 @keyframes flotar {
-    0% {
-        transform: translateY(0%);
-    }
-    50% {
-        transform: translateY(-15px); 
-    }
-    100% {
-        transform: translateY(0px); 
-    }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-
-.contenedor_1{
+// CONTENEDORES DE INFORMACIÓN (GRID)
+.contenedor_1 {
   display: grid;
-  grid-template-columns: 40% 1fr;
-  gap: 20px;
-  padding: 20px;
-  font-size: 20px;
-  text-align: justify;
-  color: whitesmoke;
-  p{
-    font-size: 20px;
+  grid-template-columns: 1fr 1fr; // Divide en dos columnas iguales
+  gap: 40px;
+  padding: 40px 5%;
+  align-items: center;
 
+  .texto-info {
+    p { font-size: 1.8rem; line-height: 1.6; }
+    strong { color: $color-principal; }
   }
-  strong{
-    color: #FF69B4;
+}
+
+// AJUSTE DE IMÁGENES (Lo que pediste específicamente)
+.Imagenes_Secundarias1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 2 columnas
+  gap: 15px;
+
+  img {
+    width: 100%;      // Obliga a la imagen a llenar el ancho del DIV
+    height: 250px;    // Altura fija para uniformidad
+    object-fit: cover; // CORTE INTELIGENTE: ajusta la foto al div sin deformarla
+    border-radius: 15px;
+    border: 2px solid $color-secundario;
   }
-  
 }
 
-.map-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
-
-.map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: 0; /* Quitar borde predeterminado [4] */
-    border-radius: 10px; /* Esquinas redondeadas (opcional) [1] */
-}
-
-/*Aqui se modifica las imagenes secundarias*/
-.Imagenes_Secundarias1{
+// SECCIÓN 3: DATOS CURIOSOS
+.section_3 {
+  .grid-curiosidades {
     display: grid;
-    grid-template-columns: 1fr 1fr ; /* Dos fotos pequeñas abajo */
-    gap: 10px;
-    object-fit: contain;
-    img{
-    /* Hace que la imagen ocupe todo el ancho disponible de su contenedor */
-    width: 100%;
+    grid-template-columns: repeat(3, 1fr); // 3 columnas
+    grid-template-rows: repeat(2, auto);    // 2 filas
+    gap: 20px;
+    padding: 40px 5%;
 
-    /* Mantiene la proporción original para que la imagen no se vea estirada */
-    height: 330px;
-
-    /* Redondea las esquinas de la imagen (8 píxeles de curvatura) */
-    border-radius: 8px; 
-
-    /* Recorta la imagen para que rellene el espacio asignado sin deformarse */
-    object-fit: cover;
+    .curiosidad {
+      background: rgba(255, 105, 180, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid $color-secundario;
+      
+      h3 { color: $color-secundario; font-size: 2.5rem; margin: 0; }
+      p { font-size: 1.5rem; }
     }
-    .Imagen1{
-        display: grid; /*Sirve para modificar la informacion en filas y columnas*/
-        grid-template-rows: auto auto; /* Sirve para establecer cuántas filas tendrá tu diseño y qué altura tendrá cada una.*/
-        gap: 10px;
-    }
+  }
 }
 
-.section_3{
+// FOOTER
+.footer_sencillo {
   text-align: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 30px;
+  background: #111;
+  margin-top: 50px;
+  border-top: 1px solid $color-principal;
+  
+  p { font-size: 1.4rem; color: #888; }
+}
+
+// RESPONSIVO (Para que se vea bien en celulares)
+@media (max-width: 768px) {
+  .contenedor_1, .grid-curiosidades {
+    grid-template-columns: 1fr; // En móviles todo va en una sola columna
+  }
 }
